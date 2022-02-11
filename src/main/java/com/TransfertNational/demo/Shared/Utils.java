@@ -23,7 +23,7 @@ public class Utils {
 
         return new String(returnValue);
     }
-
+    // for PIN |/
     public String generateNumbre(int length) {
         StringBuilder returnValue = new StringBuilder(length);
 
