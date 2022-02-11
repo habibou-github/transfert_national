@@ -86,4 +86,12 @@ public class ClientController {
         return new ResponseEntity<Client>(clientEntity, HttpStatus.ACCEPTED);
     }
 
+    @GetMapping(path = "/clientsHasNoCompte",produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Client>> getAllClientsHasCompte() {
+        List<Client> clientList = clientService.getClientsWithNoCompte();
+
+
+        return new ResponseEntity<List<Client>>(clientList, HttpStatus.OK);
+    }
+
 }

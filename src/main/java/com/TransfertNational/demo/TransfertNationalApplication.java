@@ -47,7 +47,6 @@ public class TransfertNationalApplication implements CommandLineRunner {
 		clientRepository.save(clientEntity2);
 
 		Agence agenceEntity = new Agence();
-		agenceEntity.setId(1);
 		agenceEntity.setAdresseAgence("Kaouki");
 		agenceEntity.setActive(true);
 		agenceEntity.setVilleAgence("SAFI");
@@ -55,6 +54,15 @@ public class TransfertNationalApplication implements CommandLineRunner {
 		agenceEntity.setTelephoneAgence("0661968774");
 
 		agenceRepository.save(agenceEntity);
+
+		Agence agenceEntity2 = new Agence();
+		agenceEntity2.setAdresseAgence("ITALY");
+		agenceEntity2.setActive(true);
+		agenceEntity2.setVilleAgence("CASA");
+		agenceEntity2.setNomAgence("LLLLLLLLLL");
+		agenceEntity2.setTelephoneAgence("0000000000");
+
+		agenceRepository.save(agenceEntity2);
 
 	}
 }

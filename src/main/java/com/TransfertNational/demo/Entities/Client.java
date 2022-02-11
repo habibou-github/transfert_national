@@ -28,13 +28,18 @@ public class Client{
 	@OneToOne(mappedBy="client", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	private Compte comptes;
 
+	@Column
+	private Boolean hasCompte = false;
 
 
+	public Boolean isHasCompte() {
+		return hasCompte;
+	}
 
-	
+	public void setHasCompte(Boolean hasCompte) {
+		this.hasCompte = hasCompte;
+	}
 
-
-	
 	public Compte getComptes() {
 		return comptes;
 	}

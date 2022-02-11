@@ -1,5 +1,6 @@
 package com.TransfertNational.demo.Services;
 
+import com.TransfertNational.demo.Entities.Client;
 import com.TransfertNational.demo.Shared.dto.ClientDto;
 
 import java.util.List;
@@ -16,4 +17,7 @@ public interface ClientService {
     void deleteClient(String clientId);
 
     List<ClientDto> getClients(String search);
+
+    List<Client> getClientsWithNoCompte();
+
 }

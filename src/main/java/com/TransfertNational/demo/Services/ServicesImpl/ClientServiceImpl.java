@@ -95,4 +95,17 @@ public class ClientServiceImpl implements ClientService {
         }
         return clientDtoList;
     }
+
+    @Override
+    public List<Client> getClientsWithNoCompte() {
+        List<Client> clientList;
+        List<Client> clientListHasNoCompte = new ArrayList<>();
+        clientList = clientRepository.findAllClients();
+        for(Client clientEntity: clientList) {
+            if(!clientEntity.isHasCompte()){
+                clientListHasNoCompte.add(clientEntity);
+            }
+        }
+        return clientListHasNoCompte;
+    }
 }
