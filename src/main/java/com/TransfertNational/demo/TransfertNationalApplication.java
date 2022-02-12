@@ -42,7 +42,7 @@ public class TransfertNationalApplication implements CommandLineRunner {
 		clientEntity.setGSM("0606060606");
 
 		clientRepository.save(clientEntity);
-
+/*
 		Client clientEntity2 = new Client();
 		clientEntity2.setClientId("alahoakbar12345");
 		clientEntity2.setTitre("Mme");
@@ -68,7 +68,7 @@ public class TransfertNationalApplication implements CommandLineRunner {
 		agenceEntity2.setTelephoneAgence("0000000000");
 
 		agenceRepository.save(agenceEntity2);
-
+*/
 	}
 	@Bean
 	public CorsFilter corsFilter() {
