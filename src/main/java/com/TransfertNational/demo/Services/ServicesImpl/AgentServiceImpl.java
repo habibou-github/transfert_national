@@ -25,7 +25,6 @@ public class AgentServiceImpl implements AgentService {
     public AgentDto createAgent(AgentDto agent) {
         Agent agentEntity = new Agent();
         BeanUtils.copyProperties(agent,agentEntity);
-        agentEntity.setEncryptedPassword(util.EncryptePassword(agent.getPassword()));
         agentEntity.setAgence(agenceRepository.findById(agent.getAgenceId()).orElse(null));
         agentRepository.save(agentEntity);
         return agent;
