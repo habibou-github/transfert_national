@@ -15,5 +15,5 @@ public interface AgenceService {
 
     void deleteAgence(long id);
 
-    List<AgenceDto> getAgences(String search);
+    List<AgenceDto> getAgences();
 }

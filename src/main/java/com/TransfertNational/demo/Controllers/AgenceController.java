@@ -52,16 +52,10 @@ public class AgenceController {
 
 
     @GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Agence>> getAllAgences(@RequestParam(value="search", defaultValue = "") String search) {
+    public ResponseEntity<List<Agence>> getAllAgences() {
 
-        List<Agence> agenceList = new ArrayList<>();
-        List<AgenceDto> agenceDtoList = agenceService.getAgences(search);
+        List<Agence> agenceList = agenceRepository.findAll();
 
-        for(AgenceDto agenceDto : agenceDtoList){
-            Agence agenceEntity = new Agence();
-            BeanUtils.copyProperties(agenceDto,agenceEntity);
-            agenceList.add(agenceEntity);
-        }
 
         return new ResponseEntity<List<Agence>>(agenceList, HttpStatus.OK);
     }

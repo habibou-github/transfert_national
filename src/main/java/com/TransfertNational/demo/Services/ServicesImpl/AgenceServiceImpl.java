@@ -86,16 +86,11 @@ public class AgenceServiceImpl implements AgenceService {
     }
 
     @Override
-    public List<AgenceDto> getAgences(String search) {
+    public List<AgenceDto> getAgences() {
 
         List<AgenceDto> agenceDtoList = new ArrayList<>();
         List<Agence> agenceList;
-        if(search.isEmpty()){
-            agenceList = agenceRepository.findAllAgences();
-        }
-        else {
-            agenceList = agenceRepository.findAllAgencesByCriteria(search);
-        }
+        agenceList = agenceRepository.findAllAgences();
         for(Agence agenceEntity: agenceList){
             AgenceDto agenceDto = new AgenceDto();
             BeanUtils.copyProperties(agenceEntity,agenceList);
