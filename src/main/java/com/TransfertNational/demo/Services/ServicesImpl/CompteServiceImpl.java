@@ -41,6 +41,7 @@ public class CompteServiceImpl implements CompteService {
 
         BeanUtils.copyProperties(compte,compteEntity);
         compteEntity.setCompteId(util.generateStringId(30));
+        compteEntity.setNumCompte(util.generateNumbre(16));
         compteEntity.setSolde(0);
         compteEntity.setDateCreation(now);
         Client clientEntity = new Client();
