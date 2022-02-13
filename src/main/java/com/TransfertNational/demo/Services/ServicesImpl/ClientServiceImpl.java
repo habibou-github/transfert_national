@@ -38,6 +38,9 @@ public class ClientServiceImpl implements ClientService {
 
         clientRepository.save(clientEntity);
 
+        BeanUtils.copyProperties(clientEntity,client);
+
+
         return client;
     }
 
