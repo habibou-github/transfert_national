@@ -15,4 +15,6 @@ public interface AgentService {
     void deleteAgent(long id);
 
     List<AgentDto> getAgents(String search);
+
+    Boolean logIn(String username, String password);
 }

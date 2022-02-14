@@ -20,7 +20,7 @@ public class AdminController {
 
     @GetMapping
     public String welcome() {
-        return "Welcome to our NT (National Transfer) Application :) ";
+        return "Welcome to our Transfert National Application :) ";
     }
 
 

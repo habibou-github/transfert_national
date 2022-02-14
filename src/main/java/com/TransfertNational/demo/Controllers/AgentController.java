@@ -1,6 +1,8 @@
 package com.TransfertNational.demo.Controllers;
+import com.TransfertNational.demo.Entities.Admin;
 import com.TransfertNational.demo.Entities.Agent;
 import com.TransfertNational.demo.Repositorys.AgenceRepository;
+import com.TransfertNational.demo.Repositorys.AgentRepository;
 import com.TransfertNational.demo.Services.AgentService;
 import com.TransfertNational.demo.Shared.dto.AgentDto;
 import org.springframework.beans.BeanUtils;
@@ -17,9 +19,17 @@ import java.util.List;
 @RequestMapping("/agent")
 public class AgentController {
     @Autowired
+    AgentRepository agentRepository;
+    @Autowired
     AgentService agentService;
     @Autowired
     AgenceRepository agenceRepository;
+
+    @GetMapping(path = "/logIn", consumes= MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Boolean> logIn(@RequestParam(value="u", defaultValue = "") String username , @RequestParam(value="p", defaultValue = "") String password){
+        Boolean loged = agentService.logIn(username,password);
+        return new ResponseEntity<Boolean>(loged,HttpStatus.OK);
+    }
 
     @PostMapping(consumes= MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Agent> createAgent(@RequestBody AgentDto agentDto) throws Exception{
@@ -74,6 +84,11 @@ public class AgentController {
         return new ResponseEntity<Agent>(agentEntity, HttpStatus.ACCEPTED);
     }
 
+    @GetMapping(path="/username/{username}", produces= MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Agent> getAgentByUsername(@PathVariable String username) {
+        Agent agentEntity = agentRepository.findByUsername(username);
 
+        return new ResponseEntity<Agent>(agentEntity, HttpStatus.OK);
+    }
 
 }

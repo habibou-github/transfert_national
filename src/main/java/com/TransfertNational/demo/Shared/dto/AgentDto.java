@@ -4,11 +4,20 @@ import com.TransfertNational.demo.Entities.Agence;
 
 import java.io.Serializable;
 
-public class AgentDto extends ClientDto implements Serializable {
+public class AgentDto implements Serializable {
 
+    private long id;
     private String username;
     private String password;
     private Long agenceId;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;

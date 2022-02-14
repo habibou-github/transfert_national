@@ -1,4 +1,5 @@
 package com.TransfertNational.demo.Services.ServicesImpl;
+import com.TransfertNational.demo.Entities.Admin;
 import com.TransfertNational.demo.Entities.Agent;
 import com.TransfertNational.demo.Repositorys.AgenceRepository;
 import com.TransfertNational.demo.Repositorys.AgentRepository;
@@ -25,7 +26,9 @@ public class AgentServiceImpl implements AgentService {
     public AgentDto createAgent(AgentDto agent) {
         Agent agentEntity = new Agent();
         BeanUtils.copyProperties(agent,agentEntity);
+        agentEntity.setEncryptedPassword(util.EncryptePassword(agent.getPassword()));
         agentEntity.setAgence(agenceRepository.findById(agent.getAgenceId()).orElse(null));
+
         agentRepository.save(agentEntity);
         return agent;
     }
@@ -80,4 +83,32 @@ public class AgentServiceImpl implements AgentService {
 
         return agentDtoList;
     }
+
+    @Override
+    public Boolean logIn(String username, String password){
+
+        String encryptedPassword = util.EncryptePassword(password);
+
+        List<Agent> allAgents = agentRepository.findAllAgents();
+        for (Agent a :allAgents){
+            if (a != null){
+
+                if (a.getUsername().equals(username)){
+                    if (a.getEncryptedPassword().equals(encryptedPassword)){
+                        return true;
+                    }
+                    System.out.println("password incorrect");
+                    return false;
+                }
+                System.out.println("username incorrect");
+                return false;
+            }
+        }
+        System.out.println("NO AGENT");
+        return false;
+
+    }
+
+
+
 }
