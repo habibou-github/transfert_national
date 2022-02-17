@@ -16,6 +16,7 @@ public class SalesforceAPIService implements SalesforceAPIServ {
 
     @Override
     public AuthenticationResponse login() {
+        /*
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
@@ -34,6 +35,8 @@ public class SalesforceAPIService implements SalesforceAPIServ {
 
         System.out.println(response.getBody());
         return (AuthenticationResponse) response.getBody();
+         */
+        return new AuthenticationResponse();
     }
 
 /*
@@ -53,10 +56,11 @@ public class SalesforceAPIService implements SalesforceAPIServ {
         return salesforceTestData.getBody().toString();
     }
  */
+    }
 
     @Override
     public String updatetrsData(String accessToken, String instanceUrl) {
-
+/*
         HttpHeaders headers = new HttpHeaders();
         RestTemplate restTemplate = new RestTemplate();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -68,6 +72,9 @@ public class SalesforceAPIService implements SalesforceAPIServ {
         ResponseEntity<String> salesforceTestData = restTemplate.exchange(instanceUrl + "/services/apexrest/updateres", HttpMethod.PUT, request, String.class);
         System.out.println("TOKEN DETAILS :: " + salesforceTestData.getBody());
         return salesforceTestData.getBody().toString();
+
+ */
+        return "";
     }
 
 
