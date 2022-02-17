@@ -5,6 +5,7 @@ import com.TransfertNational.demo.Entities.Transfert;
 import com.TransfertNational.demo.Repositorys.ClientRepository;
 import com.TransfertNational.demo.Repositorys.CompteRepository;
 import com.TransfertNational.demo.Repositorys.TransfertRepository;
+import com.TransfertNational.demo.Services.EmailSenderService;
 import com.TransfertNational.demo.Services.TransfertService;
 import com.TransfertNational.demo.Shared.Utils;
 import com.TransfertNational.demo.Shared.dto.ClientDto;
@@ -29,6 +30,9 @@ public class TransfertServiceImpl implements TransfertService {
     CompteRepository compteRepository;
     @Autowired
     Utils util;
+
+    @Autowired
+    EmailSenderService emailSenderService;
 
     @Override
     public Transfert creatTransfert(TransfertDto transfertDto) {
@@ -58,6 +62,22 @@ public class TransfertServiceImpl implements TransfertService {
         transfertEntity.setEtat("A servir");
 
         transfertRepository.save(transfertEntity);
+        if(transfertDto.getNotification() && transfertDto.getGAB_BOA())
+            emailSenderService.sendSimpleEmail(transfertEntity.getClientDonneur().getEmail(),
+
+                "Reference de transfert (etat : "+ transfertDto.getEtat() + ")",
+
+                "Vous avez reçu un transfert de " + transfertEntity.getMontant()  + " Dh de " + transfertEntity.getClientDonneur().getFullName() +
+                        "\n votre Reference : " +transfertEntity.getReferenceTransfert() +" | votre pin : " + transfertEntity.getPin());
+        else if(transfertDto.getNotification())
+            emailSenderService.sendSimpleEmail(transfertEntity.getClientDonneur().getEmail(),
+
+                    "Reference de transfert (etat : "+ transfertDto.getEtat() + ")",
+
+                    "Vous avez reçu un transfert de " + transfertEntity.getMontant()  + " Dh de " + transfertEntity.getClientDonneur().getFullName() +
+                            "\n votre Reference : " +transfertEntity.getReferenceTransfert());
+
+
         return transfertEntity;
     }
 

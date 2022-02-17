@@ -30,10 +30,11 @@ public class Compte {
 	@OneToOne
 	@JoinColumn(name="clientId")
 	private Client client;
-	
+
+	Date now = new Date(System.currentTimeMillis());
 
 	@Column(nullable=false)
-	private Date dateCreation;
+	private Date dateCreation = now;
 
 
 

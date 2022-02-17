@@ -25,12 +25,22 @@ public class Client{
 	@Column(nullable=false)
 	private String GSM;
 
+	@Column(nullable=false)
+	private String email;
+
 	@OneToOne(mappedBy="client", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	private Compte comptes;
 
 	@Column
-	private Boolean hasCompte = false;
+	private Boolean hasCompte = true;
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public Boolean isHasCompte() {
 		return hasCompte;

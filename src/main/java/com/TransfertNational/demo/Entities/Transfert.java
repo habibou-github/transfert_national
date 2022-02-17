@@ -43,9 +43,11 @@ public class Transfert {
 	@ManyToOne
 	@JoinColumn(name="clientBeneficaireId")
 	private Client clientBeneficaire;
-	
+
+	Date now = new Date(System.currentTimeMillis());
+
 	@Column(nullable=false)
-	private Date dateTransfert;
+	private Date dateTransfert = now;
 
 	@Column
 	private Date dateReception;
