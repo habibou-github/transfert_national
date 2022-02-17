@@ -1,15 +1,7 @@
 package com.TransfertNational.demo.Services.ServicesImpl;
 
 import com.TransfertNational.demo.Services.SalesforceAPIServ;
-import org.json.JSONObject;
-import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class SalesforceAPIService implements SalesforceAPIServ {
