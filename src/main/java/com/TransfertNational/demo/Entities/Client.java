@@ -1,5 +1,7 @@
 package com.TransfertNational.demo.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +31,7 @@ public class Client{
 	private String email;
 
 	@OneToOne(mappedBy="client", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@JsonIgnore
 	private Compte comptes;
 
 	@Column

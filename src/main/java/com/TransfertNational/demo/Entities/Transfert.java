@@ -1,5 +1,7 @@
 package com.TransfertNational.demo.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 import javax.persistence.*;
@@ -38,10 +40,12 @@ public class Transfert {
 
 	@ManyToOne
 	@JoinColumn(name="clientDonneurId")
+	@JsonIgnore
 	private Client clientDonneur;
 
 	@ManyToOne
 	@JoinColumn(name="clientBeneficaireId")
+	@JsonIgnore
 	private Client clientBeneficaire;
 
 	Date now = new Date(System.currentTimeMillis());
