@@ -1,16 +1,20 @@
 package com.TransfertNational.demo.Services.ServicesImpl;
 
 import com.TransfertNational.demo.Services.SalesforceAPIServ;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class SalesforceAPIService implements SalesforceAPIServ {
-/*
+
     @Override
     public AuthenticationResponse login() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 
         params.add("username", "yh.elhachimi@playful-fox-ld5a0w.com");
         params.add("password", "Iym@20302030tQ9rIcVLIXqF2C8zhzRiAcFLp");
@@ -27,28 +31,26 @@ public class SalesforceAPIService implements SalesforceAPIServ {
         System.out.println(response.getBody());
         return (AuthenticationResponse) response.getBody();
 
-        return new AuthenticationResponse();
     }
 
-
-    public String addtrsData(String accessToken, String instanceUrl, TransfertNational trs) {
+    @Override
+    public String addtrsData(String accessToken, String instanceUrl) {
 
         HttpHeaders headers = new HttpHeaders();
         RestTemplate restTemplate = new RestTemplate();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("Authorization", "Bearer " + accessToken);
         //   Account a = new Account();
         //  a.setName("test spring integration");
         // a.setAccountSite("account site test");
-        var accountJSON = new JSONObject(trs);
-        HttpEntity<String> request = new HttpEntity<String>(accountJSON.toString(), headers);
-        ResponseEntity<String> salesforceTestData = restTemplate.exchange(instanceUrl + "/services/apexrest/restTransfert", HttpMethod.POST, request, String.class);
+        HttpEntity<String> request = new HttpEntity<String>("{\"name\":\"Resrvation-0242\"}", headers);
+        ResponseEntity<String> salesforceTestData = restTemplate.exchange(instanceUrl + "/services/apexrest/updateres", HttpMethod.PUT, request, String.class);
         System.out.println("TOKEN DETAILS :: " + salesforceTestData.getBody());
         return salesforceTestData.getBody().toString();
     }
 
     
-
+/*
     @Override
     public String updatetrsData(String accessToken, String instanceUrl) {
 

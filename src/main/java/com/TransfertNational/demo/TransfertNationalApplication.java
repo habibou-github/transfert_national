@@ -51,13 +51,13 @@ public class TransfertNationalApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		/*
+
 		AuthenticationResponse auth = salesforceAPIServ.login();
 		System.out.println("before updatetrsData");
-		String update = salesforceAPIServ.updatetrsData(auth.getAccess_token(),auth.getInstance_url());
+		String update = salesforceAPIServ.addtrsData(auth.getAccess_token(),auth.getInstance_url());
 		System.out.println("************************************* "+update);
 
-		 */
+
 
 		//ADMIN______________________________________________________________
 		Admin admin1 = new Admin();

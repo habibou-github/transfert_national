@@ -13,6 +13,15 @@ public class ClientDto implements Serializable {
     private String titre; 	//  M. / Mme
     private String GSM;
     private String numCompte;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public long getId() {
         return id;

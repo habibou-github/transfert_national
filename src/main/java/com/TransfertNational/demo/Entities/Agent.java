@@ -1,5 +1,7 @@
 package com.TransfertNational.demo.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +20,7 @@ public class Agent {
 	
 	@ManyToOne
 	@JoinColumn(name="agenceId")
+	@JsonIgnore
 	private Agence agence;
 
 	public long getId() {
