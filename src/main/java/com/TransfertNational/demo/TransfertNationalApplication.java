@@ -223,20 +223,20 @@ public class TransfertNationalApplication implements CommandLineRunner {
 		agentRepository.save(agentEntity2);
 
 		Agent agentEntity3 = new Agent();
-		agentEntity3.setUsername("agent2");
-		agentEntity3.setEncryptedPassword("passwordAgent2");
+		agentEntity3.setUsername("agent3");
+		agentEntity3.setEncryptedPassword("passwordAgent3");
 		agentEntity3.setAgence(agenceEntity1);
 		agentRepository.save(agentEntity3);
 
 		Agent agentEntity4 = new Agent();
-		agentEntity4.setUsername("agent2");
-		agentEntity4.setEncryptedPassword("passwordAgent2");
+		agentEntity4.setUsername("agent4");
+		agentEntity4.setEncryptedPassword("passwordAgent4");
 		agentEntity4.setAgence(agenceEntity2);
 		agentRepository.save(agentEntity4);
 
 		Agent agentEntity5 = new Agent();
-		agentEntity5.setUsername("agent2");
-		agentEntity5.setEncryptedPassword("passwordAgent2");
+		agentEntity5.setUsername("agent5");
+		agentEntity5.setEncryptedPassword("passwordAgent5");
 		agentEntity5.setAgence(agenceEntity2);
 		agentRepository.save(agentEntity5);
 

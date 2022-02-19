@@ -56,14 +56,17 @@ public class AgentController {
     @GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Agent>> getAllAgents(@RequestParam(value="search", defaultValue = "") String search) {
 
-        List<Agent> agentList = new ArrayList<>();
-        List<AgentDto> agentDtoList = agentService.getAgents(search);
+        List<Agent> agentList = agentRepository.findAll();
+
+       /* List<AgentDto> agentDtoList = agentService.getAgents(search);
         for(AgentDto agentDto : agentDtoList){
             Agent agent = new Agent();
             BeanUtils.copyProperties(agentDto,agent);
             agent.setAgence(agenceRepository.findById(agentDto.getAgenceId()).orElseThrow(() -> new RuntimeException("Ce id de Agence n'existe pas")));
             agentList.add(agent);
         }
+
+        */
         return new ResponseEntity<List<Agent>>(agentList, HttpStatus.OK);
     }
 
