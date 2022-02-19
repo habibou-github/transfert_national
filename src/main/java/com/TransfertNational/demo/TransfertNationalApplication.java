@@ -52,10 +52,7 @@ public class TransfertNationalApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		AuthenticationResponse auth = salesforceAPIServ.login();
-		System.out.println("before updatetrsData");
-		String update = salesforceAPIServ.addtrsData(auth.getAccess_token(),auth.getInstance_url());
-		System.out.println("************************************* "+update);
+
 
 
 
@@ -73,6 +70,16 @@ public class TransfertNationalApplication implements CommandLineRunner {
 		adminRepository.save(admin2);
 
 		// CLIENTS___________________________________________________________
+		Client salesforceClient = new Client();
+		salesforceClient.setClientId(utils.generateStringId(30));
+		salesforceClient.setTitre("M");
+		salesforceClient.setFullName("Salesforce Client");
+		salesforceClient.setGSM("0606060606");
+		salesforceClient.setEmail("hb.hb200622@gmail.com");
+		salesforceClient.setClientId("salesforceClientId");
+		clientRepository.save(salesforceClient);
+
+
 		Client clientEntity1 = new Client();
 		clientEntity1.setClientId(utils.generateStringId(30));
 		clientEntity1.setTitre("M");

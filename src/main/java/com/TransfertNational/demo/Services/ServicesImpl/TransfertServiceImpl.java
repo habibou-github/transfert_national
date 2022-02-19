@@ -6,6 +6,7 @@ import com.TransfertNational.demo.Repositorys.ClientRepository;
 import com.TransfertNational.demo.Repositorys.CompteRepository;
 import com.TransfertNational.demo.Repositorys.TransfertRepository;
 import com.TransfertNational.demo.Services.EmailSenderService;
+import com.TransfertNational.demo.Services.SalesforceAPIServ;
 import com.TransfertNational.demo.Services.TransfertService;
 import com.TransfertNational.demo.Shared.Utils;
 import com.TransfertNational.demo.Shared.dto.ClientDto;
@@ -30,6 +31,8 @@ public class TransfertServiceImpl implements TransfertService {
     CompteRepository compteRepository;
     @Autowired
     Utils util;
+    @Autowired
+    SalesforceAPIServ salesforceAPIServ;
 
     @Autowired
     EmailSenderService emailSenderService;
@@ -77,7 +80,14 @@ public class TransfertServiceImpl implements TransfertService {
                     "Vous avez reçu un transfert de " + transfertEntity.getMontant()  + " Dh de " + transfertEntity.getClientDonneur().getFullName() +
                             "\n votre Reference : " +transfertEntity.getReferenceTransfert());
 
-
+        if(transfertDto.getClientBeneficaireId().equals("salesforceClientId")){
+            if(transfertDto.getMotif().isEmpty())
+                transfertDto.setMotif("Resrvation-2090");
+            AuthenticationResponse auth = salesforceAPIServ.login();
+            System.out.println("before updatetrsData");
+            String update = salesforceAPIServ.addtrsData(auth.getAccess_token(),auth.getInstance_url(),transfertDto.getMotif());
+            System.out.println("************************************* "+update);
+        }
         return transfertEntity;
     }
 
