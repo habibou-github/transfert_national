@@ -1,5 +1,7 @@
 package com.TransfertNational.demo.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -37,6 +39,7 @@ public class Agence {
 	
 	
 	@OneToMany(mappedBy="agence", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@JsonIgnore
 	private List<Agent> agent;
 	
 

@@ -20,7 +20,6 @@ public class Agent {
 	
 	@ManyToOne
 	@JoinColumn(name="agenceId")
-	@JsonIgnore
 	private Agence agence;
 
 	public long getId() {
