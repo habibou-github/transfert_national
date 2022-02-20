@@ -43,7 +43,7 @@ public class SalesforceAPIService implements SalesforceAPIServ {
         //   Account a = new Account();
         //  a.setName("test spring integration");
         // a.setAccountSite("account site test");
-        HttpEntity<String> request = new HttpEntity<String>("{\"name\": " + motif +"}", headers);
+        HttpEntity<String> request = new HttpEntity<String>("{\"name\":\""+motif+"\"}", headers);
         ResponseEntity<String> salesforceTestData = restTemplate.exchange(instanceUrl + "/services/apexrest/updateres", HttpMethod.PUT, request, String.class);
         System.out.println("TOKEN DETAILS :: " + salesforceTestData.getBody());
         return salesforceTestData.getBody().toString();
