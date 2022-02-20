@@ -86,7 +86,7 @@ public class CompteServiceImpl implements CompteService {
         for(Compte compteEntity: comptes) {
             CompteDto compteDto = new CompteDto();
             BeanUtils.copyProperties(compteEntity,compteDto);
-
+            compteDto.setClientId(compteEntity.getClient().getClientId());
             comptesDto.add(compteDto);
         }
 

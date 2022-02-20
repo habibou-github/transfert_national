@@ -1,5 +1,7 @@
 package com.TransfertNational.demo.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -14,10 +16,10 @@ import javax.persistence.Table;
 @Table(name="comptes")
 public class Compte {
 
-	@Id
+
 	@GeneratedValue
 	private long id;
-
+	@Id
 	@Column(nullable=false)
 	private String compteId;
 

@@ -1,4 +1,5 @@
 package com.TransfertNational.demo.Controllers;
+import com.TransfertNational.demo.Entities.Client;
 import com.TransfertNational.demo.Entities.Compte;
 import com.TransfertNational.demo.Repositorys.ClientRepository;
 import com.TransfertNational.demo.Services.CompteService;
@@ -52,7 +53,8 @@ public class CompteController {
 
             Compte compte = new Compte();
             BeanUtils.copyProperties(compteDto, compte);
-
+            Client client = clientRepository.findByClientId(compteDto.getClientId());
+            compte.setClient(client);
             comptesEntities.add(compte);
         }
 

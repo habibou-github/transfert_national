@@ -11,10 +11,10 @@ import javax.persistence.*;
 @Table(name="clients")
 public class Client{
 	
-	@Id
+
 	@GeneratedValue
 	private long id;
-	
+	@Id
 	@Column(nullable=false)
 	private String clientId;
 	
@@ -30,7 +30,7 @@ public class Client{
 	@Column(nullable=false)
 	private String email;
 
-	@OneToOne(mappedBy="client", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToOne(mappedBy="client", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	@JsonIgnore
 	private Compte comptes;
 
