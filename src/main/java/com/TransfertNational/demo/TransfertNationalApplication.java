@@ -139,6 +139,14 @@ public class TransfertNationalApplication implements CommandLineRunner {
 
 		//COMPTE___________________________________________________________
 
+		Compte comptesalesforce = new Compte();
+		comptesalesforce.setCompteId(utils.generateStringId(30));
+		comptesalesforce.setNumCompte(utils.generateNumbre(16));
+		comptesalesforce.setSolde(1000000);
+		comptesalesforce.setClient(salesforceClient);
+		compteRepository.save(comptesalesforce);
+
+
 		Compte compteEntity1 = new Compte();
 		compteEntity1.setCompteId(utils.generateStringId(30));
 		compteEntity1.setNumCompte(utils.generateNumbre(16));

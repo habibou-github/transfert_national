@@ -49,7 +49,7 @@ public class TransfertController {
         return new ResponseEntity<Transfert>(updatedTransfert, HttpStatus.ACCEPTED);
     }
 
-    @PutMapping(path = "/reception/{transfertId}", consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/reception/{transfertId}")
     public ResponseEntity<Transfert> setDateReception(@PathVariable String transfertId) {
         Transfert updatedTransfert = transfertService.setDateReception(transfertId);
 
