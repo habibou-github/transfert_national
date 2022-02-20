@@ -14,6 +14,15 @@ public class ClientDto implements Serializable {
     private String GSM;
     private String numCompte;
     private String email;
+    private Boolean hasCompte;
+
+    public Boolean getHasCompte() {
+        return hasCompte;
+    }
+
+    public void setHasCompte(Boolean hasCompte) {
+        this.hasCompte = hasCompte;
+    }
 
     public String getEmail() {
         return email;
