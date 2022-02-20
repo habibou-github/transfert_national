@@ -40,12 +40,10 @@ public class Transfert {
 
 	@ManyToOne
 	@JoinColumn(name="clientDonneurId")
-	@JsonIgnore
 	private Client clientDonneur;
 
 	@ManyToOne
 	@JoinColumn(name="clientBeneficaireId")
-	@JsonIgnore
 	private Client clientBeneficaire;
 
 	Date now = new Date(System.currentTimeMillis());

@@ -45,13 +45,16 @@ public class TransfertServiceImpl implements TransfertService {
         Date now = new Date(System.currentTimeMillis());
         Transfert transfertEntity = new Transfert();
         BeanUtils.copyProperties(transfertDto,transfertEntity);
-
+        if(transfertDto.getTypeTransfert().equals("GAB-BOA")){
+            transfertEntity.setGAB_BOA(true);
+        }
         if(transfertDto.getTypeTransfert().equals("Wallet")){
             Compte compteBeneficaire = clientRepository.findByClientId(transfertDto.getClientBeneficaireId()).getComptes();
             compteBeneficaire.setSolde(compteBeneficaire.getSolde() + transfertDto.getMontant());
             transfertEntity.setEtat("Servie");
             transfertEntity.setDateReception(now);
         }
+
         transfertEntity.setClientDonneur(clientRepository.findByClientId(transfertDto.getClientDonneurId()));
 
         transfertEntity.setClientBeneficaire(clientRepository.findByClientId(transfertDto.getClientBeneficaireId()));
@@ -66,23 +69,23 @@ public class TransfertServiceImpl implements TransfertService {
 
         transfertRepository.save(transfertEntity);
         if(transfertDto.getNotification() && transfertDto.getGAB_BOA())
-            emailSenderService.sendSimpleEmail(transfertEntity.getClientDonneur().getEmail(),
+            emailSenderService.sendSimpleEmail(transfertEntity.getClientBeneficaire().getEmail(),
 
                 "Reference de transfert (etat : "+ transfertDto.getEtat() + ")",
 
-                "Vous avez reçu un transfert de " + transfertEntity.getMontant()  + " Dh de " + transfertEntity.getClientDonneur().getFullName() +
+                "Vous avez reçu un transfert de " + transfertEntity.getMontant()  + " Dh de " + transfertEntity.getClientBeneficaire().getFullName() +
                         "\n votre Reference : " +transfertEntity.getReferenceTransfert() +" | votre pin : " + transfertEntity.getPin());
         else if(transfertDto.getNotification())
-            emailSenderService.sendSimpleEmail(transfertEntity.getClientDonneur().getEmail(),
+            emailSenderService.sendSimpleEmail(transfertEntity.getClientBeneficaire().getEmail(),
 
                     "Reference de transfert (etat : "+ transfertDto.getEtat() + ")",
 
-                    "Vous avez reçu un transfert de " + transfertEntity.getMontant()  + " Dh de " + transfertEntity.getClientDonneur().getFullName() +
+                    "Vous avez reçu un transfert de " + transfertEntity.getMontant()  + " Dh de " + transfertEntity.getClientBeneficaire().getFullName() +
                             "\n votre Reference : " +transfertEntity.getReferenceTransfert());
 
         if(transfertDto.getClientBeneficaireId().equals("salesforceClientId")){
             if(transfertDto.getMotif().isEmpty())
-                transfertDto.setMotif("Resrvation-2090");
+                transfertDto.setMotif("Resrvation-0300");
             AuthenticationResponse auth = salesforceAPIServ.login();
             System.out.println("before updatetrsData");
             String update = salesforceAPIServ.addtrsData(auth.getAccess_token(),auth.getInstance_url(),transfertDto.getMotif());
