@@ -87,7 +87,7 @@ public class AgentServiceImpl implements AgentService {
     @Override
     public Boolean logIn(String username, String password){
 
-        String encryptedPassword = util.EncryptePassword(password);
+        String encryptedPassword = password;
 
         List<Agent> allAgents = agentRepository.findAllAgents();
         for (Agent a :allAgents){
