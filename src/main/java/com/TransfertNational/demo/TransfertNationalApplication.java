@@ -77,6 +77,7 @@ public class TransfertNationalApplication implements CommandLineRunner {
 		salesforceClient.setGSM("0606060606");
 		salesforceClient.setEmail("hb.hb200622@gmail.com");
 		salesforceClient.setClientId("salesforceClientId");
+		salesforceClient.setHasCompte(true);
 		clientRepository.save(salesforceClient);
 
 
@@ -86,6 +87,7 @@ public class TransfertNationalApplication implements CommandLineRunner {
 		clientEntity1.setFullName("Hamza Habibou");
 		clientEntity1.setGSM("0606060606");
 		clientEntity1.setEmail("hb.hb200622@gmail.com");
+		clientEntity1.setHasCompte(true);
 		clientRepository.save(clientEntity1);
 
 
@@ -95,6 +97,7 @@ public class TransfertNationalApplication implements CommandLineRunner {
 		clientEntity2.setFullName("Souad Taliban");
 		clientEntity2.setGSM("0611213141");
 		clientEntity2.setEmail("info.habibou@gmail.com");
+		clientEntity2.setHasCompte(true);
 		clientRepository.save(clientEntity2);
 
 		Client clientEntity3 = new Client();
@@ -103,6 +106,7 @@ public class TransfertNationalApplication implements CommandLineRunner {
 		clientEntity3.setFullName("Yassine El-hachimi");
 		clientEntity3.setGSM("0610203040");
 		clientEntity3.setEmail("yh.elhachimi@gmail.com");
+		clientEntity3.setHasCompte(true);
 		clientRepository.save(clientEntity3);
 
 		Client clientEntity4 = new Client();
@@ -111,6 +115,7 @@ public class TransfertNationalApplication implements CommandLineRunner {
 		clientEntity4.setFullName("Naoufal Nokri");
 		clientEntity4.setGSM("0610203040");
 		clientEntity4.setEmail("naoufalnokri9999nn@gmail.com");
+		clientEntity4.setHasCompte(true);
 		clientRepository.save(clientEntity4);
 
 		Client clientEntity5 = new Client();
@@ -119,6 +124,7 @@ public class TransfertNationalApplication implements CommandLineRunner {
 		clientEntity5.setFullName("Abdelhafid Khribech");
 		clientEntity5.setGSM("0610203040");
 		clientEntity5.setEmail("khribech.abdelhafid@gmail.com");
+		clientEntity5.setHasCompte(true);
 		clientRepository.save(clientEntity5);
 
 		Client clientEntity6 = new Client();
@@ -127,6 +133,7 @@ public class TransfertNationalApplication implements CommandLineRunner {
 		clientEntity6.setFullName("Mhamed louraiga");
 		clientEntity6.setGSM("0610203040");
 		clientEntity6.setEmail("mhamedlouraiga@gmail.com");
+		clientEntity6.setHasCompte(true);
 		clientRepository.save(clientEntity6);
 
 		Client clientEntity7 = new Client();
@@ -135,6 +142,7 @@ public class TransfertNationalApplication implements CommandLineRunner {
 		clientEntity7.setFullName("Mhamed louraiga");
 		clientEntity7.setGSM("0610203040");
 		clientEntity7.setEmail("mrdjaloud@gmail.com");
+		clientEntity7.setHasCompte(true);
 		clientRepository.save(clientEntity7);
 
 		//COMPTE___________________________________________________________

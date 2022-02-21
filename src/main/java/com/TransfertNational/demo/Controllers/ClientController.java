@@ -90,8 +90,9 @@ public class ClientController {
     public ResponseEntity<List<Client>> getAllClientsHasCompte() {
         List<Client> clientList = clientService.getClientsWithNoCompte();
 
-
-        return new ResponseEntity<List<Client>>(clientList, HttpStatus.OK);
+        if(clientList!=null)
+            return new ResponseEntity<List<Client>>(clientList, HttpStatus.OK);
+        return null;
     }
 
 }

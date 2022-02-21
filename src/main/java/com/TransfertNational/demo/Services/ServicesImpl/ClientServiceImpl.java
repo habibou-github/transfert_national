@@ -91,6 +91,7 @@ public class ClientServiceImpl implements ClientService {
             clientList = clientRepository.findAllClientsByCriteria(search);
         }
         for(Client clientEntity: clientList) {
+
             ClientDto clientDto = new ClientDto();
             BeanUtils.copyProperties(clientEntity,clientDto);
 

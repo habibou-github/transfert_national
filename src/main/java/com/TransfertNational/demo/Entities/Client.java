@@ -35,7 +35,7 @@ public class Client{
 	private Compte comptes;
 
 	@Column
-	private Boolean hasCompte = true;
+	private Boolean hasCompte = false;
 
 	public String getEmail() {
 		return email;

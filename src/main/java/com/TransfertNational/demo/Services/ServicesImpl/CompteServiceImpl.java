@@ -48,6 +48,7 @@ public class CompteServiceImpl implements CompteService {
         ClientDto clientDto = clientService.getClientByClientId(compte.getClientId());
         BeanUtils.copyProperties(clientDto,clientEntity);
         compteEntity.setClient(clientEntity);
+        clientEntity.setHasCompte(true);
         compteRepository.save(compteEntity);
 
         return compte;
